@@ -1,0 +1,22 @@
+{
+  "name": "esportal",
+  "version": "0.1.0",
+  "description": "Discord Bot that uses Esportal API to Show Stats and More.",
+  "main": "esportal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -w --skipLibCheck",
+    "dev": "nodemon esportal.ts"
+  },
+  "author": "Jari",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0",
+    "wokcommands": "^1.5.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}

@@ -6,9 +6,6 @@ export default {
     category: 'esportal',
     description: 'Checks an user from Esportal.',
 
-    minArgs: 1,
-    expectedArgs: '<username>',
-
     options:
         [{
         name: 'username',
@@ -17,7 +14,7 @@ export default {
         type: DiscordJS.Constants.ApplicationCommandOptionTypes.STRING
         }],
 
-    slash: true,
+    slash: 'both',
     testOnly: false,
 
     callback: async ({ message, interaction }) => {
@@ -104,7 +101,12 @@ export default {
                 }
             ])
 
-        return embed
+        if (message) {
+            message.reply('Please use the Slash command.')
+        }
+        if (interaction) {
+            return embed
+        }
 
     },
 } as ICommand

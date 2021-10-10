@@ -63,15 +63,13 @@ var axios_1 = __importDefault(require("axios"));
 exports.default = {
     category: 'esportal',
     description: 'Checks an user from Esportal.',
-    minArgs: 1,
-    expectedArgs: '<username>',
     options: [{
             name: 'username',
             description: 'Username of the person you want to check from Esportal.',
             required: true,
             type: discord_js_1.default.Constants.ApplicationCommandOptionTypes.STRING
         }],
-    slash: true,
+    slash: 'both',
     testOnly: false,
     callback: function (_a) {
         var message = _a.message, interaction = _a.interaction;
@@ -160,7 +158,13 @@ exports.default = {
                                 inline: true
                             }
                         ]);
-                        return [2 /*return*/, embed];
+                        if (message) {
+                            message.reply('Please use the Slash command.');
+                        }
+                        if (interaction) {
+                            return [2 /*return*/, embed];
+                        }
+                        return [2 /*return*/];
                 }
             });
         });

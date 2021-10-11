@@ -5,6 +5,7 @@ exports.default = {
     description: 'Replies with pong',
     slash: 'both',
     testOnly: true,
+    ownerOnly: true,
     callback: function (_a) {
         var message = _a.message, interaction = _a.interaction;
         return ':ping_pong: Pong!';

@@ -44,10 +44,9 @@ client.on('ready', function () {
         testServers: ['896403600102801410'],
         botOwners: ['817275612430336022'],
     })
-        // const { messageHandler } = wok
         .setDefaultPrefix('e!');
 });
-(_a = client.user) === null || _a === void 0 ? void 0 : _a.setActivity('Esportal API', {
+(_a = client.user) === null || _a === void 0 ? void 0 : _a.setActivity("Esportal API", {
     type: 'LISTENING',
 });
 client.login(process.env.TOKEN);

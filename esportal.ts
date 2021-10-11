@@ -23,16 +23,14 @@ client.on('ready', () => {
         botOwners: ['817275612430336022'],
         
     })
-    // const { messageHandler } = wok
     .setDefaultPrefix('e!')
     })
-
+    
     client.user?.setActivity (
-        'Esportal API',
-        {
-        type: 'LISTENING',
-        })
-
-
+    `Esportal API`,
+    {  
+    type: 'LISTENING',
+    })
+            
 
 client.login(process.env.TOKEN)

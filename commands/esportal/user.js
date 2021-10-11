@@ -69,41 +69,60 @@ exports.default = {
             required: true,
             type: discord_js_1.default.Constants.ApplicationCommandOptionTypes.STRING
         }],
+    minArgs: 1,
+    maxArgs: 1,
+    expectedArgs: '<Username>',
     slash: 'both',
     testOnly: false,
+    ownerOnly: false,
     callback: function (_a) {
-        var message = _a.message, interaction = _a.interaction;
+        var message = _a.message, text = _a.text, interaction = _a.interaction;
         return __awaiter(void 0, void 0, void 0, function () {
-            var options, username, res, data, embed;
+            var res, data, messageembed, options, text_1, res, data, interactionembed;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        options = interaction.options;
-                        username = options.getString('username');
+                        if (!message) return [3 /*break*/, 2];
                         return [4 /*yield*/, axios_1.default
-                                .get("https://api.esportal.com/user_profile/get?username=" + username + "&bans=1&team=1&twitch=1")];
+                                .get("https://api.esportal.com/user_profile/get?username=" + text + "&bans=1&team=1&twitch=1")];
                     case 1:
                         res = _b.sent();
                         data = res.data;
-                        console.log(data);
-                        embed = new discord_js_1.MessageEmbed()
-                            .setTitle("View the Profile of " + username)
-                            .setURL("https://esportal.com/profile/" + username)
+                        messageembed = new discord_js_1.MessageEmbed()
+                            .setTitle("View the Profile of " + data.username)
+                            .setURL("https://esportal.com/profile/" + data.username)
                             .setColor('AQUA')
                             .addFields([
                             {
                                 name: ':bust_in_silhouette: User',
-                                value: "" + username,
+                                value: "" + data.username,
+                                inline: true
+                            },
+                            {
+                                name: ':triangular_flag_on_post: Team',
+                                value: "" + data.team.name,
                                 inline: true
                             },
                             {
                                 name: ':no_entry_sign: Banned',
                                 value: "" + data.banned,
                                 inline: true
+                            }
+                        ])
+                            .addFields([
+                            {
+                                name: ':star: Level',
+                                value: "" + data.level,
+                                inline: true
                             },
                             {
                                 name: ':green_square: ELO',
                                 value: "" + data.elo,
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
                                 inline: true
                             }
                         ])
@@ -158,13 +177,107 @@ exports.default = {
                                 inline: true
                             }
                         ]);
-                        if (message) {
-                            message.reply('Please use the Slash command.');
-                        }
-                        if (interaction) {
-                            return [2 /*return*/, embed];
-                        }
-                        return [2 /*return*/];
+                        return [2 /*return*/, messageembed];
+                    case 2:
+                        if (!interaction) return [3 /*break*/, 4];
+                        options = interaction.options;
+                        text_1 = options.getString('username');
+                        return [4 /*yield*/, axios_1.default
+                                .get("https://api.esportal.com/user_profile/get?username=" + text_1 + "&bans=1&team=1&twitch=1")];
+                    case 3:
+                        res = _b.sent();
+                        data = res.data;
+                        interactionembed = new discord_js_1.MessageEmbed()
+                            .setTitle("View the Profile of " + data.username)
+                            .setURL("https://esportal.com/profile/" + data.username)
+                            .setColor('AQUA')
+                            .addFields([
+                            {
+                                name: ':bust_in_silhouette: User',
+                                value: "" + data.username,
+                                inline: true
+                            },
+                            {
+                                name: ':triangular_flag_on_post: Team',
+                                value: "" + data.team.name,
+                                inline: true
+                            },
+                            {
+                                name: ':no_entry_sign: Banned',
+                                value: "" + data.banned,
+                                inline: true
+                            }
+                        ])
+                            .addFields([
+                            {
+                                name: ':star: Level',
+                                value: "" + data.level,
+                                inline: true
+                            },
+                            {
+                                name: ':green_square: ELO',
+                                value: "" + data.elo,
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            }
+                        ])
+                            .addFields([
+                            {
+                                name: ':+1: Thumbs Up',
+                                value: "" + data.thumbs_up,
+                                inline: true
+                            },
+                            {
+                                name: ':-1: Thumbs Down',
+                                value: "" + data.thumbs_down,
+                                inline: true
+                            },
+                            {
+                                name: ':trophy: MVPs',
+                                value: "" + data.mvps,
+                                inline: true
+                            }
+                        ])
+                            .addFields([
+                            {
+                                name: ':regional_indicator_w: Wins',
+                                value: "" + data.wins,
+                                inline: true
+                            },
+                            {
+                                name: ':regional_indicator_l: Losses',
+                                value: "" + data.losses,
+                                inline: true
+                            },
+                            {
+                                name: ':regional_indicator_d: Drops',
+                                value: "" + data.drops,
+                                inline: true
+                            }
+                        ])
+                            .addFields([
+                            {
+                                name: ':gun: Kills',
+                                value: "" + data.kills,
+                                inline: true
+                            },
+                            {
+                                name: ':skull: Deaths',
+                                value: "" + data.deaths,
+                                inline: true
+                            },
+                            {
+                                name: ':busts_in_silhouette: Assists',
+                                value: "" + data.assists,
+                                inline: true
+                            }
+                        ]);
+                        return [2 /*return*/, interactionembed];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

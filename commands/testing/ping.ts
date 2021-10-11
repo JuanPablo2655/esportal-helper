@@ -6,6 +6,7 @@ export default {
 
     slash: 'both',
     testOnly: true,
+    ownerOnly: true,
 
     callback: ({ message, interaction }) => {
         return ':ping_pong: Pong!'

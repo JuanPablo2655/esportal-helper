@@ -44,8 +44,10 @@ var axios_1 = __importDefault(require("axios"));
 exports.default = {
     category: 'esportal',
     description: 'Checks Recent Esportal Matches.',
+    maxArgs: 0,
     slash: 'both',
     testOnly: false,
+    ownerOnly: false,
     callback: function (_a) { return __awaiter(void 0, void 0, void 0, function () {
         var res, data, embed;
         return __generator(this, function (_b) {
@@ -55,7 +57,6 @@ exports.default = {
                 case 1:
                     res = _b.sent();
                     data = res.data;
-                    console.log(data);
                     embed = new discord_js_1.MessageEmbed()
                         .setTitle("View Esportal")
                         .setURL("https://esportal.com/home")

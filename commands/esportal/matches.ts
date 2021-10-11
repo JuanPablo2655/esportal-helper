@@ -39,9 +39,7 @@ export default {
                 name: '\u200B',
                 value: '\u200B',
                 inline: true
-                }
-            ])
-            .addFields([
+                },
                 {
                 name: 'Gathers This Week',
                 value: `${data.gathers_this_week}`,

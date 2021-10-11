@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default {
     category: 'esportal',
-    description: 'Checks Recent Esportal Matches.',
+    description: 'Checks The Stats of Esportal.',
 
     maxArgs: 0,
 

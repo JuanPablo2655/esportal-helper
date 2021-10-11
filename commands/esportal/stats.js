@@ -43,7 +43,7 @@ var discord_js_1 = require("discord.js");
 var axios_1 = __importDefault(require("axios"));
 exports.default = {
     category: 'esportal',
-    description: 'Checks Recent Esportal Matches.',
+    description: 'Checks The Stats of Esportal.',
     maxArgs: 0,
     slash: 'both',
     testOnly: false,

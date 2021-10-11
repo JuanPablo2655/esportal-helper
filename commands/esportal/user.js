@@ -78,15 +78,27 @@ exports.default = {
     callback: function (_a) {
         var message = _a.message, text = _a.text, interaction = _a.interaction;
         return __awaiter(void 0, void 0, void 0, function () {
-            var res, data, messageembed, options, text_1, res, data, interactionembed;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            var invaliduserembed, res, _b, data, messageembed, options, text_1, res, _c, data, interactionembed;
+            return __generator(this, function (_d) {
+                switch (_d.label) {
                     case 0:
-                        if (!message) return [3 /*break*/, 2];
+                        invaliduserembed = new discord_js_1.MessageEmbed()
+                            .setTitle("`" + text + "` is not a valid user.")
+                            .setDescription("Please specify a valid User.")
+                            .setColor('RED');
+                        if (!message) return [3 /*break*/, 5];
+                        _d.label = 1;
+                    case 1:
+                        _d.trys.push([1, 3, , 4]);
                         return [4 /*yield*/, axios_1.default
                                 .get("https://api.esportal.com/user_profile/get?username=" + text + "&bans=1&team=1&twitch=1")];
-                    case 1:
-                        res = _b.sent();
+                    case 2:
+                        res = _d.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        _b = _d.sent();
+                        return [2 /*return*/, invaliduserembed];
+                    case 4:
                         data = res.data;
                         messageembed = new discord_js_1.MessageEmbed()
                             .setTitle("View the Profile of " + data.username)
@@ -99,17 +111,15 @@ exports.default = {
                                 inline: true
                             },
                             {
-                                name: ':triangular_flag_on_post: Team',
-                                value: "" + data.team.name,
-                                inline: true
-                            },
-                            {
                                 name: ':no_entry_sign: Banned',
                                 value: "" + data.banned,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
                             {
                                 name: ':star: Level',
                                 value: "" + data.level,
@@ -124,9 +134,22 @@ exports.default = {
                                 name: "\u200B",
                                 value: "\u200B",
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
                             {
                                 name: ':+1: Thumbs Up',
                                 value: "" + data.thumbs_up,
@@ -141,9 +164,7 @@ exports.default = {
                                 name: ':trophy: MVPs',
                                 value: "" + data.mvps,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
                             {
                                 name: ':regional_indicator_w: Wins',
                                 value: "" + data.wins,
@@ -158,9 +179,7 @@ exports.default = {
                                 name: ':regional_indicator_d: Drops',
                                 value: "" + data.drops,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
                             {
                                 name: ':gun: Kills',
                                 value: "" + data.kills,
@@ -178,14 +197,22 @@ exports.default = {
                             }
                         ]);
                         return [2 /*return*/, messageembed];
-                    case 2:
-                        if (!interaction) return [3 /*break*/, 4];
+                    case 5:
+                        if (!interaction) return [3 /*break*/, 10];
                         options = interaction.options;
                         text_1 = options.getString('username');
+                        _d.label = 6;
+                    case 6:
+                        _d.trys.push([6, 8, , 9]);
                         return [4 /*yield*/, axios_1.default
                                 .get("https://api.esportal.com/user_profile/get?username=" + text_1 + "&bans=1&team=1&twitch=1")];
-                    case 3:
-                        res = _b.sent();
+                    case 7:
+                        res = _d.sent();
+                        return [3 /*break*/, 9];
+                    case 8:
+                        _c = _d.sent();
+                        return [2 /*return*/, invaliduserembed];
+                    case 9:
                         data = res.data;
                         interactionembed = new discord_js_1.MessageEmbed()
                             .setTitle("View the Profile of " + data.username)
@@ -198,17 +225,15 @@ exports.default = {
                                 inline: true
                             },
                             {
-                                name: ':triangular_flag_on_post: Team',
-                                value: "" + data.team.name,
-                                inline: true
-                            },
-                            {
                                 name: ':no_entry_sign: Banned',
                                 value: "" + data.banned,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
                             {
                                 name: ':star: Level',
                                 value: "" + data.level,
@@ -223,9 +248,22 @@ exports.default = {
                                 name: "\u200B",
                                 value: "\u200B",
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
+                            {
+                                name: "\u200B",
+                                value: "\u200B",
+                                inline: true
+                            },
                             {
                                 name: ':+1: Thumbs Up',
                                 value: "" + data.thumbs_up,
@@ -240,9 +278,7 @@ exports.default = {
                                 name: ':trophy: MVPs',
                                 value: "" + data.mvps,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
                             {
                                 name: ':regional_indicator_w: Wins',
                                 value: "" + data.wins,
@@ -257,9 +293,7 @@ exports.default = {
                                 name: ':regional_indicator_d: Drops',
                                 value: "" + data.drops,
                                 inline: true
-                            }
-                        ])
-                            .addFields([
+                            },
                             {
                                 name: ':gun: Kills',
                                 value: "" + data.kills,
@@ -277,7 +311,7 @@ exports.default = {
                             }
                         ]);
                         return [2 /*return*/, interactionembed];
-                    case 4: return [2 /*return*/];
+                    case 10: return [2 /*return*/];
                 }
             });
         });

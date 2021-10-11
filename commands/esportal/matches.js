@@ -49,13 +49,26 @@ exports.default = {
     testOnly: false,
     ownerOnly: false,
     callback: function (_a) { return __awaiter(void 0, void 0, void 0, function () {
-        var res, data, embed;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4 /*yield*/, axios_1.default
-                        .get("https://api.esportal.com/stats/matches_played")];
+        var errorembed, res, _b, data, embed;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    errorembed = new discord_js_1.MessageEmbed()
+                        .setTitle("An error has occured.")
+                        .setDescription("Please try again later.")
+                        .setColor('RED');
+                    _c.label = 1;
                 case 1:
-                    res = _b.sent();
+                    _c.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, axios_1.default
+                            .get("https://api.esportal.com/stats/matches_played")];
+                case 2:
+                    res = _c.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    _b = _c.sent();
+                    return [2 /*return*/, errorembed];
+                case 4:
                     data = res.data;
                     embed = new discord_js_1.MessageEmbed()
                         .setTitle("View Esportal")

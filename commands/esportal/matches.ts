@@ -13,9 +13,24 @@ export default {
     ownerOnly: false,
 
     callback: async ({ }) => {
+
+        const errorembed = new MessageEmbed()
+        .setTitle(`An error has occured.`)
+        .setDescription(`Please try again later.`)
+        .setColor('RED')
         
-        let res = await axios
+        try {
+            
+        var res = await axios
             .get(`https://api.esportal.com/stats/matches_played`) as any
+        
+        }
+            
+        catch {
+
+            return errorembed
+        
+        }
             
         let data = res.data;
         //console.log(data)

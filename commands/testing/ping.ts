@@ -5,10 +5,10 @@ export default {
     description: 'Replies with pong',
 
     slash: 'both',
-    testOnly: true,
-    ownerOnly: true,
+    testOnly: false,
+    ownerOnly: false,
 
-    callback: ({ message, interaction }) => {
+    callback: ({ }) => {
         return ':ping_pong: Pong!'
     },
 } as ICommand

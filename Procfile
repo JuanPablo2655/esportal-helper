@@ -1,1 +1,1 @@
-worker: node esportal.js
+worker: ts-node esportal.ts

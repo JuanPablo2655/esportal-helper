@@ -22,6 +22,9 @@
 
 <br>
 
+<h2>Support me and help me get hosting for my current and future projects.</h2>
+<br>
+
 <p align="center" >
   <a href="https://streamelements.com/maybejari/tip">
   Support me donating Paypal.

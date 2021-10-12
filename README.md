@@ -6,7 +6,7 @@
 <p>Type "npm install" to install required node modules.</p>
 <p>Create a new file ".env" without a name.</p>
 <p>Edit the file and type "TOKEN=yourbottoken" inside it and save it, make sure you never share your bot token with anybody.</p>
-<p>Run the bot by typing "node esportal.js" unless you want to use the typescript version then you can type "ts-node esportal.ts"</p>
+<p>Run the bot by typing "node esportal.js" unless you want to use the typescript version then you can type "ts-node esportal.ts", requires "typescript" and "ts-node", install instructions on the 2nd part of the readme.</p>
 
 <br>
 

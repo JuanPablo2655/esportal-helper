@@ -7,6 +7,7 @@ export default {
     slash: 'both',
     testOnly: false,
     ownerOnly: false,
+    ephemeral: true,
 
     callback: ({ }) => {
         return ':ping_pong: Pong!'

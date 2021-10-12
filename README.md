@@ -15,7 +15,6 @@
 <p>Open your preferred code editor, I recommend using Visual Studio Code: https://code.visualstudio.com/</p>
 <p>Start by installing typescript and ts-node by typing "npm install -g typescript ts-node" on your command prompt.</p>
 <p> Type "npm run dev" on command prompt to automatically run and restart your bot when changes have been made.</p>
-<p>Please only make commands and changes to the ".ts" files when making new commands or changes to the main bot.</p>
 <p>Create new commands into commands folder, you can also create subfolders.</p>
 <p>Create new commands such as "commandname.ts" and create your commands using typescript.</p>
 

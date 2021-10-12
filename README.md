@@ -4,7 +4,7 @@
 <p>Install Node, Make sure to have minimum version: 16.11.0, Download node from: https://nodejs.org/en/</p>
 <p>Open your Command Prompt and CD to the Bot Folder.</p>
 <p>Type "npm install" to install required node modules.</p>
-<p>Edit ".env" file and add edit "yourbottoken" token to your bot's token and save it, make sure you never share your bot token with anybody.</p>
+<p>Edit ".env" file and edit "yourbottoken" token to your bot's token and save it, make sure you never share your bot token with anybody.</p>
 <p>Run the bot by typing "ts-node esportal.ts"</p>
 
 <br>

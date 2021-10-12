@@ -7,10 +7,17 @@ export default {
     slash: 'both',
     testOnly: false,
     ownerOnly: false,
-    ephemeral: true,
 
-    callback: ({ }) => {
-        return ':ping_pong: Pong!'
+    callback: ({ message, interaction }) => {
+        if(message) {
+            message.reply(':ping_pong: Pong!')
+        }
+        if (interaction) {
+            interaction.reply({
+                content: ':ping_pong: Pong!',
+                ephemeral: true,
+            })
+        }
     },
 } as ICommand
 

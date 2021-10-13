@@ -25,12 +25,5 @@ client.on('ready', () => {
     })
     .setDefaultPrefix('e!')
     })
-    
-    client.user?.setActivity (
-    `Esportal API`,
-    {  
-    type: 'LISTENING',
-    })
-            
 
 client.login(process.env.TOKEN)

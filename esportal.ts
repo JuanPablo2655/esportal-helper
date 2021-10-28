@@ -1,6 +1,7 @@
 import DiscordJS, { Intents, Interaction } from 'discord.js'
 import WOKCommands from 'wokcommands'
 import path from 'path'
+import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -21,6 +22,10 @@ client.on('ready', () => {
         typeScript: true,
         testServers: ['896403600102801410'],
         botOwners: ['817275612430336022'],
+        //mongoUri: process.env.DB,
+        // dbOptions: {
+        //     keepAlive: true
+        // }
         
     })
     .setDefaultPrefix('e!')

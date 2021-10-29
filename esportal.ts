@@ -70,7 +70,8 @@ client.on ('ready', () => {
             activities: [
                 {
                     name: status,
-                    type: 'WATCHING',
+                    type: 'STREAMING',
+                    url: "https://twitch.tv/esportal"
                 },
             ],
         })

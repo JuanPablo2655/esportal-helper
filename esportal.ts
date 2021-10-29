@@ -22,10 +22,21 @@ client.on('ready', () => {
         typeScript: true,
         testServers: ['896403600102801410'],
         botOwners: ['817275612430336022'],
-        //mongoUri: process.env.DB,
+
+        disabledDefaultCommands: [
+            'help',
+            'command',
+            'language',
+            'prefix',
+            'requiredrole',
+            'channelonly'
+        ],
+
+        mongoUri: process.env.DB,
         // dbOptions: {
         //     keepAlive: true
         // }
+        debug: true,
         
     })
     .setDefaultPrefix('e!')

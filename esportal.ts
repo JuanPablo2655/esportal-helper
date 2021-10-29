@@ -55,7 +55,7 @@ client.on ('ready', () => {
             let esportal = res.data;
             //console.log(data)
             const arrayOfStatus = [
-                `Over ${client.guilds.cache.size} servers!`,
+                `Serving ${client.guilds.cache.size} servers!`,
                 `Prefix is: 'e!'`,
                 `Currently Online: ${esportal.online_users}`,
                 `Currently in Queue: ${esportal.queued_users}`,

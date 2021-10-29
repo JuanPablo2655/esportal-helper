@@ -3,6 +3,7 @@ import WOKCommands from 'wokcommands'
 import path from 'path'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import axios from "axios";
 dotenv.config()
 
 const client = new DiscordJS.Client({
@@ -15,7 +16,7 @@ const client = new DiscordJS.Client({
     ]
 })
 
-client.on('ready', () => {
+client.on ('ready', () => {
 
     const wok = new WOKCommands(client, {
         commandsDir: path.join(__dirname, 'commands'),
@@ -41,5 +42,38 @@ client.on('ready', () => {
     })
     .setDefaultPrefix('e!')
     })
+
+    let statuses = 0;
+    setInterval ( async () => {
+        try {     
+            var res = await axios
+                .get(`https://api.esportal.com/matchmaking/stats`) as any    
+            }          
+            catch {
+            
+            }
+            let esportal = res.data;
+            //console.log(data)
+            const arrayOfStatus = [
+                `Over ${client.guilds.cache.size} servers!`,
+                `Prefix is: 'e!'`,
+                `Currently Online: ${esportal.online_users}`,
+                `Currently in Queue: ${esportal.queued_users}`,
+                `Live Gather Matches: ${esportal.live_gathers}`,
+            ];
+            
+            statuses++;
+            if(statuses >= arrayOfStatus.length) statuses = 0;
+            const status = arrayOfStatus[statuses];
+            console.log(status)
+            client.user?.setPresence({
+            activities: [
+                {
+                    name: status,
+                    type: 'WATCHING',
+                },
+            ],
+        })
+    }, 60000)
 
 client.login(process.env.TOKEN)

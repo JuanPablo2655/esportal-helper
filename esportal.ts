@@ -8,6 +8,7 @@ dotenv.config()
 
 const counter = require('./counters/counters.ts')
 
+// Intents
 const client = new DiscordJS.Client({
 intents: [
     Intents.FLAGS.GUILDS,
@@ -18,21 +19,26 @@ intents: [
 ]
 })
 
+// TOPGG Autoposter
 const ap = AutoPoster(process.env.TOPGG || '', client)
 
 ap.on('posted', () => {
   console.log('Posted stats to Top.gg!')
 })
 
+// Client
 client.on('ready', () => {
 
+    // Counter Channels
     setInterval(async () => {
     counter(client)
     }, 303000)
 
+    // Console Logs
     console.log(`Esportal Helper is now helping!`)
     console.log(`Serving ${client.guilds.cache.size} servers.`)
 
+    // Worn Off Keys
 const wok = new WOKCommands(client, {
     commandsDir: path.join(__dirname, 'commands'),
     typeScript: true,
@@ -56,6 +62,7 @@ const wok = new WOKCommands(client, {
 .setDefaultPrefix('e!')
 })
 
+// Automatic Status
 let statuses = 0;
 setInterval ( async () => {
     try {     
@@ -90,4 +97,5 @@ setInterval ( async () => {
     })
 }, 60000)
 
+// Client Login
 client.login(process.env.TOKEN)

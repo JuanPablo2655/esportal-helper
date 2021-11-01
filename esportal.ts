@@ -30,13 +30,10 @@ ap.on('posted', () => {
 client.on('ready', () => {
 
     // Counter Channels
-    setInterval(async () => {
     counter(client)
-    }, 303000)
 
     // Console Logs
     console.log(`Esportal Helper is now helping!`)
-    console.log(`Serving ${client.guilds.cache.size} servers.`)
 
     // Worn Off Keys
 const wok = new WOKCommands(client, {

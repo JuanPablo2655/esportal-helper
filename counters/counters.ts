@@ -1,7 +1,7 @@
 import axios from "axios";
 
 module.exports = async (client: { channels: { fetch: (arg0: string) => any; }; guilds: { cache: { size: any; }; }; users: { cache: { size: any; }; }; }) => {
-
+    setInterval(async () => {
     try {
         var res = await axios
             .get(`https://api.esportal.com/matchmaking/stats`) as any
@@ -21,4 +21,5 @@ module.exports = async (client: { channels: { fetch: (arg0: string) => any; }; g
     online.setName(`Online on Esportal: ${esportal.online_users}`)
     queue.setName(`In Queue: ${esportal.queued_users}`)
     live.setName(`Live Gathers: ${esportal.live_gathers}`)
+    }, 303000)
 }

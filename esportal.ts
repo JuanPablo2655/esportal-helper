@@ -6,6 +6,8 @@ import dotenv from 'dotenv'
 import axios from "axios"
 dotenv.config()
 
+const counter = require('./counters/counters.ts')
+
 const client = new DiscordJS.Client({
 intents: [
     Intents.FLAGS.GUILDS,
@@ -23,6 +25,14 @@ ap.on('posted', () => {
 })
 
 client.on('ready', () => {
+
+    setInterval(async () => {
+    counter(client)
+    }, 303000)
+
+    console.log(`Esportal Helper is now helping!`)
+    console.log(`Serving ${client.guilds.cache.size} servers.`)
+
 const wok = new WOKCommands(client, {
     commandsDir: path.join(__dirname, 'commands'),
     typeScript: true,
@@ -45,6 +55,7 @@ const wok = new WOKCommands(client, {
 })
 .setDefaultPrefix('e!')
 })
+
 let statuses = 0;
 setInterval ( async () => {
     try {     

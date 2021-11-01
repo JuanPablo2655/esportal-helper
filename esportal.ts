@@ -55,7 +55,7 @@ setInterval ( async () => {
         
         }
         let esportal = res.data;
-        //console.log(data)
+        // console.log(data)
         const arrayOfStatus = [
             `Serving ${client.guilds.cache.size} servers!`,
             `Prefix is: 'e!'`,
@@ -67,7 +67,7 @@ setInterval ( async () => {
         statuses++;
         if(statuses >= arrayOfStatus.length) statuses = 0;
         const status = arrayOfStatus[statuses];
-        console.log(status)
+        // console.log(status)
         client.user?.setPresence({
         activities: [
             {

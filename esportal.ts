@@ -1,12 +1,12 @@
 import DiscordJS, { Intents } from 'discord.js'
 import WOKCommands from 'wokcommands'
+import { AutoPoster } from 'topgg-autoposter'
 import path from 'path'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const counter = require('./features/counters/counters.ts')
-const status = require('./features/autostatus/status.ts')
-const autopost = require('./features/autostatus/status.ts')
+const counter = require('./features/counters.ts')
+const status = require('./features/status.ts')
 
 // Intents
 const client = new DiscordJS.Client({
@@ -19,18 +19,24 @@ intents: [
 ]
 })
 
+  // Autoposter
+  const ap = AutoPoster(process.env.TOPGG || '', client)
+
+  ap.on('posted', () => {
+    console.log('Posted stats to Top.gg!')
+})
+
 // Client
 client.on('ready', () => {
 
     // Features
     counter(client)
     status(client)
-    autopost(client)
 
     // Console Logs
     console.log(`Esportal Helper is now helping!`)
 
-    // Worn Off Keys
+// Worn Off Keys
 const wok = new WOKCommands(client, {
     commandsDir: path.join(__dirname, 'commands'),
     typeScript: true,

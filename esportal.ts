@@ -1,12 +1,12 @@
 import DiscordJS, { Intents } from 'discord.js'
-import { AutoPoster } from 'topgg-autoposter'
 import WOKCommands from 'wokcommands'
 import path from 'path'
 import dotenv from 'dotenv'
-import axios from "axios"
 dotenv.config()
 
-const counter = require('./counters/counters.ts')
+const counter = require('./features/counters/counters.ts')
+const status = require('./features/autostatus/status.ts')
+const autopost = require('./features/autostatus/status.ts')
 
 // Intents
 const client = new DiscordJS.Client({
@@ -19,18 +19,13 @@ intents: [
 ]
 })
 
-// TOPGG Autoposter
-const ap = AutoPoster(process.env.TOPGG || '', client)
-
-ap.on('posted', () => {
-  console.log('Posted stats to Top.gg!')
-})
-
 // Client
 client.on('ready', () => {
 
-    // Counter Channels
+    // Features
     counter(client)
+    status(client)
+    autopost(client)
 
     // Console Logs
     console.log(`Esportal Helper is now helping!`)
@@ -54,45 +49,12 @@ const wok = new WOKCommands(client, {
     //     keepAlive: true
     // }
     debug: true,
-    
-})
-.setDefaultPrefix('e!')
-})
 
-// Automatic Status
-let statuses = 0;
-setInterval ( async () => {
-    try {     
-        var res = await axios
-            .get(`https://api.esportal.com/matchmaking/stats`) as any    
-        }          
-        catch {
-        
-        }
-        let esportal = res.data;
-        // console.log(data)
-        const arrayOfStatus = [
-            `Serving ${client.guilds.cache.size} servers!`,
-            `Prefix is: 'e!'`,
-            `Currently Online: ${esportal.online_users}`,
-            `Currently in Queue: ${esportal.queued_users}`,
-            `Live Gather Matches: ${esportal.live_gathers}`,
-        ];
-        
-        statuses++;
-        if(statuses >= arrayOfStatus.length) statuses = 0;
-        const status = arrayOfStatus[statuses];
-        // console.log(status)
-        client.user?.setPresence({
-        activities: [
-            {
-                name: status,
-                type: 'STREAMING',
-                url: "https://twitch.tv/esportal"
-            },
-        ],
-    })
-}, 60000)
+})
+    // Prefixes
+    .setDefaultPrefix('e!')
+    // .setDefaultPrefix('et!')
+})
 
 // Client Login
 client.login(process.env.TOKEN)

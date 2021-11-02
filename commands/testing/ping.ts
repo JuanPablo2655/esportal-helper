@@ -8,6 +8,8 @@ export default {
     testOnly: false,
     ownerOnly: false,
 
+    maxArgs: 0,
+
     callback: ({ message, interaction }) => {
         if(message) {
             message.reply(':ping_pong: Pong!')
@@ -20,6 +22,3 @@ export default {
         }
     },
 } as ICommand
-
-// !ping
-// /ping

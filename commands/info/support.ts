@@ -1,7 +1,7 @@
 import { ICommand } from "wokcommands";
 
 export default {
-    category: 'Utility',
+    category: 'Info',
     description: 'Gives you the Support Server Invite.',
 
     slash: 'both',

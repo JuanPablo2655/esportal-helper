@@ -2,7 +2,7 @@ import { ICommand } from "wokcommands";
 
 export default {
     category: 'Utility',
-    description: 'Gives you the Support Server Invite.',
+    description: 'Replies with pong',
 
     slash: 'both',
     testOnly: false,
@@ -12,11 +12,11 @@ export default {
 
     callback: ({ message, interaction }) => {
         if(message) {
-            message.reply('You can invite the bot at: https://dsc.gg/esportalbot')
+            message.reply(':ping_pong: Pong!')
         }
         if (interaction) {
             interaction.reply({
-                content: 'You can invite the bot at: https://dsc.gg/esportalbot',
+                content: ':ping_pong: Pong!',
                 ephemeral: true,
             })
         }

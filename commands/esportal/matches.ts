@@ -3,7 +3,7 @@ import DiscordJS, { Message, MessageEmbed } from 'discord.js';
 import axios from "axios";
 
 export default {
-    category: 'esportal',
+    category: 'Esportal',
     description: 'Checks Recent Esportal Matches.',
 
     maxArgs: 0,

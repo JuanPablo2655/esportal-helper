@@ -7,6 +7,7 @@ dotenv.config()
 
 const counter = require('./features/counters.ts')
 const status = require('./features/status.ts')
+const alphastatus = require('./features/alphastatus.ts')
 
 // Intents
 const client = new DiscordJS.Client({
@@ -30,8 +31,10 @@ intents: [
 client.on('ready', () => {
 
     // Features
+
     counter(client)
     status(client)
+    // alphastatus(client)
 
     // Console Logs
     console.log(`Esportal Helper is now helping!`)
@@ -43,7 +46,7 @@ const wok = new WOKCommands(client, {
     testServers: ['896403600102801410'],
     botOwners: ['817275612430336022'],
     disabledDefaultCommands: [
-        'help',
+        // 'help',
         'command',
         'language',
         'prefix',
@@ -60,6 +63,27 @@ const wok = new WOKCommands(client, {
     // Prefixes
     .setDefaultPrefix('e!')
     // .setDefaultPrefix('et!')
+
+    // Commmand Categories
+    .setCategorySettings([
+        {
+            name: 'Esportal',
+            emoji: '🎮',
+        },
+        {
+            name: 'Utility',
+            emoji: '🚧',
+        },
+        {
+            name: 'Info',
+            emoji: '📔',
+        },
+        {
+            name: 'Owner',
+            emoji: '🖥️',
+            ownerOnly: true,
+        }
+    ])
 })
 
 // Client Login

@@ -75,6 +75,10 @@ const wok = new WOKCommands(client, {
             emoji: '📔',
         },
         {
+            name: 'Other',
+            emoji: '🔍',
+        },
+        {
             name: 'Developer',
             emoji: '🖥️',
         }

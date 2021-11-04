@@ -1,5 +1,3 @@
-Do u like this very "clean" code :KEK: 
-```ts
 import { Channel, MessageEmbed } from 'discord.js';
 const logschannel = '905764848376369163'
 
@@ -30,5 +28,3 @@ client.on('guildDelete', (guild: { name: any; id: any; memberCount: any; ownerId
     client.channels.cache.get(logschannel).send({embeds: [leave]})
 })
 }
-
-```

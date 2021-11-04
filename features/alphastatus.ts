@@ -1,11 +1,10 @@
 module.exports = async (client: { guilds: { cache: { size: any; }; }; user: { setPresence: (arg0: { activities: { name: string; type: string; url: string; }[]; }) => void; }; }) => {
     let statuses = 0;
     setInterval(async () => {
-        // console.log(data)
         const arrayOfStatus = [
             `This is Esportal Helper Canary!`,
             `Prefix is: 'e!'`,
-            `Testing is fun.'`,
+            `Testing is fun.`,
         ];
         
         statuses++;

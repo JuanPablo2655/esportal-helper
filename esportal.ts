@@ -46,20 +46,16 @@ const wok = new WOKCommands(client, {
     testServers: ['896403600102801410'],
     botOwners: ['817275612430336022'],
     disabledDefaultCommands: [
-        // 'help',
-        'command',
         'language',
-        'prefix',
-        'requiredrole',
-        'channelonly'
     ],
     mongoUri: process.env.DB,
     // dbOptions: {
     //     keepAlive: true
-    // }
+    // },
     debug: true,
 
 })
+
     // Prefixes
     .setDefaultPrefix('e!')
     // .setDefaultPrefix('et!')
@@ -79,11 +75,19 @@ const wok = new WOKCommands(client, {
             emoji: '📔',
         },
         {
-            name: 'Owner',
+            name: 'Developer',
             emoji: '🖥️',
-            ownerOnly: true,
         }
     ])
+
+    wok.on('databaseConnected', (connection: any, state: any) => {
+        console.log(`Database connection state is "${state}"`)
+      })
+
+    wok.on('commandException', (command: { names: any[] }, message: any, error: any) => {
+        console.log(`An exception occured when using command "${command.names[0]}"! The error is:`)
+        console.error(error)
+      })
 })
 
 // Client Login

@@ -32,7 +32,6 @@ intents: [
 client.on('ready', () => {
 
     // Features
-
     counter(client)
     guildslog(client)
     status(client)

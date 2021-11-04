@@ -2,7 +2,7 @@ import { ICommand } from "wokcommands";
 
 export default {
     category: 'Other',
-    description: 'Gives you the Voting.',
+    description: 'Gives you the Voting URL.',
 
     slash: 'both',
     testOnly: false,

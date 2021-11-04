@@ -1,8 +1,8 @@
-import { Channel, MessageEmbed, Client, Guild } from 'discord.js';
+import { Channel, MessageEmbed } from 'discord.js';
 const logschannel = '905764848376369163'
 
-module.exports = (client: Client) => {
-    client.on('guildCreate', (guild: Guild) => {
+module.exports = (client: { on: (arg0: string, arg1: { (guild: any): void; (guild: any): void; }) => void; guilds: { cache: { size: any; }; }; channels: { cache: { get: (arg0: string) => { (): any; new(): any; send: { (arg0: { embeds: MessageEmbed[]; }): void; new(): any; }; }; }; }; }) => {
+    client.on('guildCreate', (guild: { name: any; id: any; memberCount: any; ownerId: any; iconURL: (arg0: { dynamic: boolean; }) => string; }) => {
     const join = new MessageEmbed()
         .setTitle('Added to Guild!')
         .addField('Guild Info:', `${guild.name} (${guild.id})`)
@@ -15,7 +15,7 @@ module.exports = (client: Client) => {
     client.channels.cache.get(logschannel).send({embeds: [join]})
 })
 // 
-client.on('guildDelete', (guild: Guild) => {
+client.on('guildDelete', (guild: { name: any; id: any; memberCount: any; ownerId: any; iconURL: (arg0: { dynamic: boolean; }) => string; }) => {
     const leave = new MessageEmbed()
         .setTitle('Removed from Guild!')
         .addField('Guild Info:', `${guild.name} (${guild.id})`)

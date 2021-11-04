@@ -25,7 +25,7 @@ client.on('guildDelete', (guild: Guild) => {
         .addField('Owner Info:', `ID (${guild.ownerId})`)
         .setFooter(`Currently in ${client.guilds.cache.size} guilds!`)
         .setTimestamp()
-        .setThumbnail(guild.iconURL({ dynamic: true }))
+        .setThumbnail(guild.iconURL({ dynamic: true }) ?? '')
         .setColor('RED')
     (client.channels.cache.get(logschannel) as TextChannel)?.send({embeds: [leave]})
 })

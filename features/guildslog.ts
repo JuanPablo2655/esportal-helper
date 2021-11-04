@@ -14,7 +14,7 @@ module.exports = (client: { on: (arg0: string, arg1: { (guild: any): void; (guil
         .setColor('GREEN')
     client.channels.cache.get(logschannel).send({embeds: [join]})
 })
-// 
+ 
 client.on('guildDelete', (guild: { name: any; id: any; memberCount: any; ownerId: any; iconURL: (arg0: { dynamic: boolean; }) => string; }) => {
     const leave = new MessageEmbed()
         .setTitle('Removed from Guild!')

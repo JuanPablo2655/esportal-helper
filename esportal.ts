@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const counter = require('./features/counters.ts')
+const guildslog = require('./features/guildslog.ts')
 const status = require('./features/status.ts')
 const alphastatus = require('./features/alphastatus.ts')
 
@@ -33,6 +34,7 @@ client.on('ready', () => {
     // Features
 
     counter(client)
+    guildslog(client)
     status(client)
     // alphastatus(client)
 
@@ -58,7 +60,6 @@ const wok = new WOKCommands(client, {
 
     // Prefixes
     .setDefaultPrefix('e!')
-    // .setDefaultPrefix('et!')
 
     // Commmand Categories
     .setCategorySettings([
